@@ -38,10 +38,6 @@ pipeline {
                 }
             }
         }
-
-        stage("01"){
-            failFast true
-            parallel {
         
                 //构建
                 stage("Build"){
@@ -70,9 +66,7 @@ pipeline {
                         }
                     }
                 }
-            }
-        }
-    }
+         }
 
     //构建后操作
     post {
