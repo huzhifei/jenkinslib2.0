@@ -29,7 +29,7 @@ pipeline {
             steps{  //步骤
                 timeout(time:5, unit:"MINUTES"){   //步骤超时时间
                     script{ //填写运行代码
-                        println('获取代码')
+                        print('获取代码')
                         tools.PrintMes("获取代码",'green')
                         println("${test}")
                         
@@ -48,7 +48,7 @@ pipeline {
                     steps{
                         timeout(time:20, unit:"MINUTES"){
                             script{
-                                println('应用打包')
+                                print('应用打包')
                                 tools.PrintMes("应用打包",'green')
                                 mvnHome = tool "M2"
                                 println(mvnHome)
