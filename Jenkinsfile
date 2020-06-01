@@ -38,36 +38,33 @@ pipeline {
                 }
             }
         }
-        
-                //构建
-                stage("Build"){
-                    steps{
-                        timeout(time:20, unit:"MINUTES"){
-                            script{
-                                print('应用打包')
-                                tools.PrintMes("应用打包",'green')
-                                mvnHome = tool "M2"
-                                println(mvnHome)
-                                
-                                sh "${mvnHome}/bin/mvn --version"
-                            }
-                        }
+        //构建
+        stage("Build"){
+            steps{
+                timeout(time:20, unit:"MINUTES"){
+                    script{
+                        print('应用打包')
+                        tools.PrintMes("应用打包",'green')
+                        mvnHome = tool "M2"
+                        println(mvnHome) 
+                        sh "${mvnHome}/bin/mvn --version"
                     }
                 }
+            }
+        }
         
-                //代码扫描
-                stage("CodeScan"){
-                    steps{
-                        timeout(time:30, unit:"MINUTES"){
-                            script{
-                                print("代码扫描")
-                                tools.PrintMes("代码扫描",'green')
-                            }
-                        }
+        //代码扫描
+        stage("CodeScan"){
+            steps{
+                timeout(time:30, unit:"MINUTES"){
+                    script{
+                       print("代码扫描")
+                        tools.PrintMes("代码扫描",'green')
                     }
                 }
-         }
-
+            }
+        }
+    }
     //构建后操作
     post {
         always {
